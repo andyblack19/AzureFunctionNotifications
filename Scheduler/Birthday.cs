@@ -1,16 +1,17 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
 
 namespace Scheduler
 {
     public static class Birthday
     {
-        [FunctionName("Birthday")]
-        public static async Task Run([TimerTrigger("0 */5 * * * *")]TimerInfo timer, ILogger log)
+        private const string FunctionName = "Birthday";
+
+        [FunctionName(FunctionName)]
+        public static async Task Run([TimerTrigger("0 */5 * * * *")]TimerInfo timer)
         {
-            log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
+            Logging.Success($"Timer trigger function executed at UTC: {DateTime.UtcNow}", FunctionName);
         }
     }
 }
