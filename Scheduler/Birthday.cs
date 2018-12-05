@@ -53,7 +53,7 @@ namespace Scheduler
             {
                 Id = 1,
                 UserGuid = Guid.NewGuid(),
-                EmailAddress = "andyblack16@brighthr.com",
+                EmailAddress = "andyblack16@gmail.com",
                 DeviceTokens = new List<Device>
                 {
                     new Device { Platform = "android", Token = "APA91bHWFyE2dhCw0R6q14qKzQNv_XTtSlWnoTrrzYW_vmhQL2M3u6m2vldfocvoO9AePcwd5vOPhCS3qnjq_BdrShajuSmlQ2Cc421ehI5bkiaWvGm35hlaqDEiD-W_jkt5KbPck5dA" },

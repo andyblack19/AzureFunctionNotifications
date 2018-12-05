@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using System.Net.Mail;
 using Microsoft.Azure.WebJobs;
-using Newtonsoft.Json;
 
 namespace Scheduler
 {
@@ -28,7 +27,7 @@ namespace Scheduler
 
             foreach (var recipient in notification.EmailRecipients)
             {
-                email.Add(new EmailNotification(new MailAddress(recipient), notification.EmailSubject, notification.EmailHtmlContent));
+                email.Add(new EmailNotification(recipient, notification.EmailSubject, notification.EmailHtmlContent));
             }
 
             foreach (var device in notification.DeviceRecipients.Where(x => x.Platform == "android"))
@@ -44,43 +43,6 @@ namespace Scheduler
             foreach (var device in notification.DeviceRecipients.Where(x => x.Platform == "web"))
             {
                 webPush.Add(new PushNotification(device.Token, notification.PushNotificationContent));
-            }
-        }
-
-        public class EmailNotification
-        {
-            public MailAddress From => new MailAddress("noreply@brighthr.com");
-            public MailAddress To { get; }
-            public string Subject { get; }
-            public string Body { get; }
-
-            [JsonConstructor]
-            private EmailNotification()
-            {
-            }
-
-            public EmailNotification(MailAddress to, string subject, string body)
-            {
-                To = to;
-                Subject = subject;
-                Body = body;
-            }
-        }
-
-        public class PushNotification
-        {
-            public string Device { get; }
-            public string Message { get; }
-
-            [JsonConstructor]
-            private PushNotification()
-            {
-            }
-
-            public PushNotification(string device, string message)
-            {
-                Device = device;
-                Message = message;
             }
         }
     }
