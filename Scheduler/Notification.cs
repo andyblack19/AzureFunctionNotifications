@@ -1,31 +1,47 @@
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Scheduler
 {
-    public abstract class Notification
+    public class Notification
     {
-        public abstract IEnumerable<string> EmailRecipients { get; }
-        public abstract string HtmlEmailContent { get; }
+        [JsonConstructor]
+        private Notification()
+        {
+        }
 
-        public abstract IEnumerable<string> DeviceRecipients { get; }
-        public abstract string PushNotificationContent { get; }
+        protected Notification(
+            int type,
+            IEnumerable<string> emailRecipients,
+            string htmlEmailContent,
+            IEnumerable<string> deviceRecipients,
+            string pushNotificationContent)
+        {
+            Type = type;
+            EmailRecipients = emailRecipients;
+            HtmlEmailContent = htmlEmailContent;
+            DeviceRecipients = deviceRecipients;
+            PushNotificationContent = pushNotificationContent;
+        }
+
+        public int Type { get; }
+
+        public IEnumerable<string> EmailRecipients { get; }
+        public string HtmlEmailContent { get; }
+
+        public IEnumerable<string> DeviceRecipients { get; }
+        public string PushNotificationContent { get; }
     }
 
     public class BirthdayNotification : Notification
     {
-        public override IEnumerable<string> EmailRecipients { get; }
-        public override string HtmlEmailContent { get; }
-
-        public override IEnumerable<string> DeviceRecipients { get; }
-        public override string PushNotificationContent => "Happy Birthday! from BrightHR";
-
-        public BirthdayNotification(Employee employee)
+        public BirthdayNotification(Employee employee) :
+            base(7,
+                new List<string> {employee.EmailAddress},
+                $"<h2>Hi {employee.Personal.FirstName},</h2><br/><br/><strong>Happy Birthday</strong> from everyone at BrightHR.",
+                employee.DeviceTokens,
+                "Happy Birthday! from BrightHR")
         {
-            EmailRecipients = new List<string> { employee.EmailAddress };
-
-            HtmlEmailContent = $"<h2>Hi {employee.Personal.FirstName},</h2><br/><br/><strong>Happy Birthday</strong> from everyone at BrightHR.";
-
-            DeviceRecipients = employee.DeviceTokens;
         }
     }
 }
