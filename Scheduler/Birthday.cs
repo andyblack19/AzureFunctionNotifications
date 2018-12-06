@@ -60,6 +60,11 @@ namespace Scheduler
                     //new Device { Platform = "android", Token = "en1gPUT2QU4:APA91bEbuE-9COuZ5Dndp4qkj7LeIc077LrLAIsZ4wSJhJO8zEgqw5ka4EdtBFQ79hk4eob-WJ5n_OgULDNjbl-gXmodkARFIf8cIzHmiMOCvWt1F2vc1jIRnratxgfxtFGvbPPKh9Fks_u4jNRrYTsyA3-WPcdHcg" },
                     //new Device { Platform = "android", Token = "dWkqrtpYa_8:APA91bEFQZIQrK0y-5kkzQeC-xGbJH1r6lDV5voznIMqB2r-6Rd69iptInx-LNDkgKK9NYlo_vpxVkb5Kp2qax57JV10RB_PTilYwW_-oasW29UjKOXDUbMSbtgzy4YbgX3ZeMF48l5R" },
                     new Device { Platform = "android", Token = "eSOPyaY3PtU:APA91bHyfJyMZxjDlq7Xd4y3j3PeogJ8ubhhZ0MjP1sBylWWT0NzFVgVnJXf6crBD8g8gLJJhPKIn9uKfZ002nRze6FiMPeKbbhCYIrhHfyRKlUXF71NeUsqpNaNlJnMwW3mS4uLS_F0" },
+                    // These are Sean's production tokens... 2 of them work
+                    //new Device { Platform = "ios", Token = "16fe92efaa67b59468137c8b760a578eb4582fe5c0909aa076e4e0cfda0705a2" },
+                    //new Device { Platform = "ios", Token = "44319b612a0e2d7304c374e89b8f0fb44364f72b4dbb9de00749781d6e8c27a0" },
+                    //new Device { Platform = "ios", Token = "9dee0a64b09637a9c59118ce2eaa7be19213546516f5ddcf85d9f00c0c442dca" },
+                    //new Device { Platform = "ios", Token = "c70bc5399283b37c193f2baf4f34a7da9ceb3afb18bd01061518be9aca1bd5e3" },
                     // this does not need signalr connection subscriptions now
                 },
                 Personal = new Personal
