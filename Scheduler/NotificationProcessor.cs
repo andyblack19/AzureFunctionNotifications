@@ -21,7 +21,7 @@ namespace Scheduler
             [Queue(EmailQueueName, Connection = InfrastructureStorageAppSetting)] ICollector<EmailNotification> email,
             [Queue(AndroidPushNotificationQueueName, Connection = InfrastructureStorageAppSetting)] ICollector<PushNotification> androidPush,
             [Queue(IosPushNotificationQueueName, Connection = InfrastructureStorageAppSetting)]  ICollector<PushNotification> iosPush,
-            [Queue(SignalrNotificationQueueName, Connection = InfrastructureStorageAppSetting)]  ICollector<PushNotification> webPush)
+            [Queue(SignalrNotificationQueueName, Connection = InfrastructureStorageAppSetting)]  ICollector<SignalrNotification> webPush)
         {
             Logging.Success($"Queue trigger function executed at UTC: {DateTime.UtcNow}", FunctionName);
 
@@ -40,10 +40,7 @@ namespace Scheduler
                 iosPush.Add(new PushNotification(device.Token, notification.PushNotificationContent));
             }
 
-            foreach (var device in notification.DeviceRecipients.Where(x => x.Platform == "web"))
-            {
-                webPush.Add(new PushNotification(device.Token, notification.PushNotificationContent));
-            }
+            webPush.Add(new SignalrNotification(notification.UserGuid, notification.PushNotificationContent));
         }
     }
 }

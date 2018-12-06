@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -11,6 +12,7 @@ namespace Scheduler
         }
 
         protected Notification(
+            Guid userGuid,
             int type,
             IEnumerable<string> emailRecipients,
             string emailSubject,
@@ -18,6 +20,7 @@ namespace Scheduler
             IEnumerable<Device> deviceRecipients,
             string pushNotificationContent)
         {
+            UserGuid = userGuid;
             Type = type;
             EmailRecipients = emailRecipients;
             EmailSubject = emailSubject;
@@ -26,6 +29,7 @@ namespace Scheduler
             PushNotificationContent = pushNotificationContent;
         }
 
+        public Guid UserGuid { get; set; }
         public int Type { get; set; }
 
         public IEnumerable<string> EmailRecipients { get; set; }
@@ -39,7 +43,8 @@ namespace Scheduler
     public class BirthdayNotification : Notification
     {
         public BirthdayNotification(Employee employee) :
-            base(7,
+            base(new Guid("59200E96-CB00-4FFD-856D-BE23786FEEC7"), 
+                7,
                 new List<string> {employee.EmailAddress},
                 "subject - happy birthday",
                 $"<h2>Hi {employee.Personal.FirstName},</h2><br/><br/><strong>Happy Birthday</strong> from everyone at BrightHR.",

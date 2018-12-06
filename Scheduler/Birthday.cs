@@ -60,6 +60,7 @@ namespace Scheduler
                     //new Device { Platform = "android", Token = "en1gPUT2QU4:APA91bEbuE-9COuZ5Dndp4qkj7LeIc077LrLAIsZ4wSJhJO8zEgqw5ka4EdtBFQ79hk4eob-WJ5n_OgULDNjbl-gXmodkARFIf8cIzHmiMOCvWt1F2vc1jIRnratxgfxtFGvbPPKh9Fks_u4jNRrYTsyA3-WPcdHcg" },
                     //new Device { Platform = "android", Token = "dWkqrtpYa_8:APA91bEFQZIQrK0y-5kkzQeC-xGbJH1r6lDV5voznIMqB2r-6Rd69iptInx-LNDkgKK9NYlo_vpxVkb5Kp2qax57JV10RB_PTilYwW_-oasW29UjKOXDUbMSbtgzy4YbgX3ZeMF48l5R" },
                     new Device { Platform = "android", Token = "eSOPyaY3PtU:APA91bHyfJyMZxjDlq7Xd4y3j3PeogJ8ubhhZ0MjP1sBylWWT0NzFVgVnJXf6crBD8g8gLJJhPKIn9uKfZ002nRze6FiMPeKbbhCYIrhHfyRKlUXF71NeUsqpNaNlJnMwW3mS4uLS_F0" },
+                    // this does not need signalr connection subscriptions now
                 },
                 Personal = new Personal
                 {
